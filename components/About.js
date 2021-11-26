@@ -32,6 +32,7 @@ const About = () => {
         variant="h4"
         gutterBottom
         component="div"
+        color="white"
         sx={{ fontFamily: "Patrick Hand" }}
       >
         Bienvenido a mi portafolio
