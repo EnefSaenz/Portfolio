@@ -22,6 +22,7 @@ const About = () => {
         variant="h3"
         gutterBottom
         component="div"
+        color="white"
         sx={{ textTransform: "uppercase", fontFamily: "Concert One" }}
       >
         Emmanuel Sáenz
