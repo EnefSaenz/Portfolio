@@ -1,19 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Grid, Card, CardMedia, Typography, Stack, Link } from "@mui/material";
-
-const StyledStack = styled(Stack)`
-  position: absolute;
-  right: 5px;
-  top: 0;
-`;
 
 const Project = ({ project }) => {
   const { name, url, img, urlGit } = project;
 
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={4} lg={4}>
       <Card
         sx={{
           height: 300,
