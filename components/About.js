@@ -1,7 +1,6 @@
 import React from "react";
-import { Avatar, Stack, Typography, Divider } from "@mui/material";
+import { Avatar, Stack, Typography } from "@mui/material";
 import { teal } from "@mui/material/colors";
-import TimeLine from "./TimeLine";
 
 const About = () => {
   return (
@@ -38,8 +37,6 @@ const About = () => {
           Bienvenido a mi portafolio
         </Typography>
       </Stack>
-      <Divider />
-      <TimeLine />
     </>
   );
 };

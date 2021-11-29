@@ -44,7 +44,7 @@ const Project = ({ project }) => {
             opacity: 0.6,
             width: "100%",
             height: "10%",
-            fontFamily: "Concert One",
+            fontFamily: "Fredoka One",
             transition: "300ms",
             cursor: "default",
             "&:hover": {

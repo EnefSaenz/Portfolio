@@ -6,15 +6,17 @@ import {
   Fab,
   Avatar,
   Drawer,
-  IconButton,
+  Divider,
+  Typography,
 } from "@mui/material";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { teal } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Layout from "../components/Layout";
 import About from "../components/About";
 import Project from "../components/Project";
+import TimeLine from "../components/TimeLine";
 
 const projects = [
   {
@@ -67,13 +69,13 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     padding: 0,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: "5ms",
     }),
     marginLeft: 0,
     ...(open && {
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
+        duration: "5ms",
       }),
       marginLeft: "100%",
       "@media (min-width: 900px)": {
@@ -83,17 +85,8 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   })
 );
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
-
 export default function Home() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -115,32 +108,44 @@ export default function Home() {
         }}
       >
         <Fab
-          aria-label="add"
+          variant="extended"
+          aria-label="about"
           sx={{
             position: "fixed",
-            left: 5,
-            top: 5,
+            left: 10,
+            top: 10,
             zIndex: 1001,
-            bgcolor: "transparent",
+            width: 150,
+            height: 50,
+            justifyContent: "normal",
           }}
           onClick={handleDrawerOpen}
         >
+          <Typography
+            sx={{
+              fontSize: 20,
+              fontFamily: "Fredoka One",
+              background:
+                "linear-gradient(90deg,rgba(0, 127, 128, 1) 0%,rgba(184, 33, 142, 1) 33%,rgba(75, 233, 255, 1) 69%,rgba(0, 127, 128, 1) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            About
+          </Typography>
           <Avatar
             alt="Emmanuel Sáenz"
             src="/static/img/avatar.jpg"
             sx={{
-              width: "100%",
+              bgcolor: teal[700],
+              color: "white",
+              position: "absolute",
+              right: 0,
               height: "100%",
-              bgcolor: "transparent",
-              fontSize: 58,
-              color: teal[700],
-              filter: "brightness(95%)",
-              "&:hover": {
-                filter: "brightness(100%)",
-              },
+              width: "auto",
             }}
           >
-            <FontAwesomeIcon icon={["fas", "chevron-circle-right"]} />
+            ES
           </Avatar>
         </Fab>
 
@@ -148,6 +153,7 @@ export default function Home() {
           sx={{
             width: "100%",
             flexShrink: 0,
+            position: "relative",
             "& .MuiDrawer-paper": {
               width: "inherit",
               boxSizing: "border-box",
@@ -160,22 +166,32 @@ export default function Home() {
           anchor="left"
           open={open}
         >
-          <DrawerHeader>
-            About me!
-            <IconButton
-              onClick={handleDrawerClose}
-              sx={{ color: teal[700], fontSize: 36 }}
-            >
-              <FontAwesomeIcon icon={["fas", "chevron-circle-left"]} />
-            </IconButton>
-          </DrawerHeader>
+          <Fab
+            aria-label="about"
+            sx={{
+              position: "absolute",
+              right: 20,
+              top: 10,
+              fontSize: 26,
+              bgcolor: teal[700],
+              color: "white",
+              "&:hover": {
+                bgcolor: teal[800],
+              },
+            }}
+            onClick={handleDrawerClose}
+          >
+            <FontAwesomeIcon icon={["fas", "chevron-left"]} />
+          </Fab>
           <About />
+          <Divider />
+          <TimeLine />
         </Drawer>
         <Main open={open}>
           <Grid
             container
-            spacing={0}
-            sx={{ marginBottom: 5 }}
+            spacing={1}
+            sx={{ p: 1 }}
             columns={open && { md: 4, lg: 8 }}
           >
             {projects.map((project) => (

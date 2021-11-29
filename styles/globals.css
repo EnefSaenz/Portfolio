@@ -5,6 +5,7 @@ html {
 body {
   min-height: 100%;
   font-family: "Patrick Hand", cursive;
+  /*
   background: rgb(3, 0, 55);
   background: linear-gradient(
     90deg,
@@ -13,5 +14,13 @@ body {
     rgba(0, 60, 73, 1) 69%,
     rgba(3, 0, 55, 1) 100%
   );
-  color: white;
+  */
+  background: rgb(0, 127, 128);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 127, 128, 1) 0%,
+    rgba(184, 33, 142, 1) 33%,
+    rgba(75, 233, 255, 1) 69%,
+    rgba(0, 127, 128, 1) 100%
+  );
 }
