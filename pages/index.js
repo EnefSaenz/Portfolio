@@ -6,10 +6,7 @@ import {
   Fab,
   Avatar,
   Drawer,
-  Divider,
   IconButton,
-  Tooltip,
-  Zoom,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import { teal } from "@mui/material/colors";
@@ -117,42 +114,35 @@ export default function Home() {
           },
         }}
       >
-        <Tooltip
-          TransitionComponent={Zoom}
-          title="About"
-          placement="right"
-          arrow
+        <Fab
+          aria-label="add"
+          sx={{
+            position: "fixed",
+            left: 5,
+            top: 5,
+            zIndex: 1001,
+            bgcolor: "transparent",
+          }}
+          onClick={handleDrawerOpen}
         >
-          <Fab
-            aria-label="add"
+          <Avatar
+            alt="Emmanuel Sáenz"
+            src="/static/img/avatar.jpg"
             sx={{
-              position: "absolute",
-              left: 5,
-              top: 5,
-              zIndex: 1001,
+              width: "100%",
+              height: "100%",
               bgcolor: "transparent",
+              fontSize: 58,
+              color: teal[700],
+              filter: "brightness(95%)",
+              "&:hover": {
+                filter: "brightness(100%)",
+              },
             }}
-            onClick={handleDrawerOpen}
           >
-            <Avatar
-              alt="Emmanuel Sáenz"
-              src="/static/img/avatar.jpg"
-              sx={{
-                width: "100%",
-                height: "100%",
-                bgcolor: "transparent",
-                fontSize: 58,
-                color: teal[700],
-                filter: "brightness(95%)",
-                "&:hover": {
-                  filter: "brightness(100%)",
-                },
-              }}
-            >
-              <FontAwesomeIcon icon={["fas", "chevron-circle-right"]} />
-            </Avatar>
-          </Fab>
-        </Tooltip>
+            <FontAwesomeIcon icon={["fas", "chevron-circle-right"]} />
+          </Avatar>
+        </Fab>
 
         <Drawer
           sx={{
