@@ -1,69 +1,88 @@
 import React from "react";
+import {
+  Grid,
+  Card,
+  Typography,
+  Link,
+  CardMedia,
+  IconButton,
+  CardContent,
+  Avatar,
+  CardHeader,
+} from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Grid, Card, CardMedia, Typography, Stack, Link } from "@mui/material";
+
+import dynamic from "next/dynamic";
+
+const Carousel = dynamic(() => import("react-material-ui-carousel"), {
+  ssr: false,
+});
 
 const Project = ({ project }) => {
-  const { name, url, img, urlGit } = project;
+  // Destructuring
+  const { name, description, url, images, urlGit, iconTech } = project;
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
-      <Card
-        sx={{
-          height: 300,
-          position: "relative",
-          borderRadius: 0,
-        }}
-      >
-        <Link href={url} color="inherit">
-          <CardMedia
-            image={img}
-            title={name}
+      <Carousel indicators={false} fullHeightHover={false}>
+        {images.map((img) => (
+          <Card
+            key={img.url}
             sx={{
-              backgroundColor: "white",
-              height: "100%",
-              overflow: "hidden",
-              position: "relative",
-              transition: "300ms",
-              cursor: "pointer",
-              filter: "brightness(80%)",
-              "&:hover": {
-                filter: "brightness(100%)",
-              },
+              height: 300,
             }}
-          ></CardMedia>
-        </Link>
-        <Typography
-          variant="h5"
-          px={1}
-          sx={{
-            textOverflow: "ellipsis",
-            position: "absolute",
-            bottom: 0,
-            backgroundColor: "black",
-            color: "white",
-            opacity: 0.6,
-            width: "100%",
-            height: "10%",
-            fontFamily: "Fredoka One",
-            transition: "300ms",
-            cursor: "default",
-            "&:hover": {
-              opacity: 0.8,
-            },
-          }}
-        >
-          <span>{name}</span>
-          <Stack
-            direction="row"
-            spacing={1}
-            sx={{ float: "right", height: "100%" }}
           >
-            <Link href={urlGit} color="inherit">
-              <FontAwesomeIcon icon={["fab", "github"]} />
+            <CardHeader
+              title={
+                <Typography sx={{ fontFamily: "Fredoka One" }}>
+                  {name}
+                </Typography>
+              }
+              subheader={<Typography>12/11/2021</Typography>}
+              avatar={
+                <Avatar sx={{ bgcolor: "black", color: "cyan" }}>
+                  <FontAwesomeIcon icon={["fab", `${iconTech}`]} />
+                </Avatar>
+              }
+              action={
+                <IconButton
+                  href={urlGit}
+                  aria-label="link to repo"
+                  sx={{ bgcolor: "transparent", color: "black", fontSize: 30 }}
+                >
+                  <FontAwesomeIcon icon={["fab", "github"]} />
+                </IconButton>
+              }
+            />
+            <Link href={url} color="inherit">
+              <CardMedia
+                image={img.url}
+                sx={{
+                  height: "100%",
+                  cursor: "pointer",
+                  filter: "brightness(80%)",
+                  "&:hover": {
+                    filter: "brightness(100%)",
+                  },
+                }}
+              />
             </Link>
-          </Stack>
-        </Typography>
-      </Card>
+            <CardContent
+              sx={{
+                position: "absolute",
+                bottom: 0,
+                bgcolor: "rgba(0,0,0,0.8)",
+                color: "white",
+                width: "100%",
+              }}
+            >
+              <Typography sx={{ fontFamily: "Patrick Hand" }}>
+                {description}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
+      </Carousel>
     </Grid>
   );
 };

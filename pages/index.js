@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Container,
@@ -17,51 +17,7 @@ import Layout from "../components/Layout";
 import About from "../components/About";
 import Project from "../components/Project";
 import TimeLine from "../components/TimeLine";
-
-const projects = [
-  {
-    id: 1,
-    name: "MERN Tasks",
-    url: "https://mern-tasks-by-enef.netlify.app/",
-    img: "/static/img/projects/1.jpg",
-    urlGit: "https://github.com/EnefSaenz/merntasks-client",
-  },
-  {
-    id: 2,
-    name: "Product Hunt",
-    url: "http://google.com",
-    img: "/static/img/projects/2.jpg",
-    urlGit: "https://github.com/EnefSaenz/merntasks-server",
-  },
-  {
-    id: 3,
-    name: "Drinks recipes",
-    url: "https://drinks-recipes-by-enef.netlify.app/",
-    img: "/static/img/projects/3.jpg",
-    urlGit: "https://github.com/EnefSaenz/DrinksRecipes",
-  },
-  {
-    id: 4,
-    name: "Products Inventory",
-    url: "https://products-inventory-by-enef.netlify.app/",
-    img: "/static/img/projects/4.jpg",
-    urlGit: "https://github.com/EnefSaenz/CRUDReduxClient",
-  },
-  {
-    id: 5,
-    name: "Cotizador de CryptoMonedas",
-    url: "https://crypto-quoter-by-enef.netlify.app/",
-    img: "/static/img/projects/5.jpg",
-    urlGit: "https://github.com/EnefSaenz/CryptoCurrencies",
-  },
-  {
-    id: 6,
-    name: "Images browser",
-    url: "https://images-browser-by-enef.netlify.app/",
-    img: "/static/img/projects/6.jpg",
-    urlGit: "https://github.com/EnefSaenz/Pixabay",
-  },
-];
+import axiosClient from "../config/axios";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -86,7 +42,20 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 );
 
 export default function Home() {
+  //States
+  const [projects, setProjects] = useState([]);
   const [open, setOpen] = useState(true);
+
+  // Effect for loading projects
+  useEffect(() => {
+    const getProjects = async () => {
+      const response = await axiosClient.get("/projects");
+
+      setProjects(response.data);
+    };
+
+    getProjects();
+  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -113,7 +82,7 @@ export default function Home() {
           sx={{
             position: "fixed",
             left: 10,
-            top: 10,
+            top: "10%",
             zIndex: 1001,
             width: 150,
             height: 50,
