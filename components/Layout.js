@@ -13,6 +13,7 @@ const Layout = (props) => {
           href="https://fonts.googleapis.com/css2?family=Concert+One&family=Fredoka+One&family=Itim&family=Patrick+Hand&family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet"
         />
+        <link href="/static/css/app.css" rel="stylesheet" />
       </Head>
 
       <main>{props.children}</main>

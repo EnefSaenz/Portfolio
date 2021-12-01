@@ -1,40 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
-  Box,
   Container,
-  Grid,
   Fab,
   Avatar,
   Drawer,
   Divider,
   Typography,
-  CircularProgress,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { teal } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-
-// import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 
 import Layout from "../components/Layout";
 import About from "../components/About";
 import TimeLine from "../components/TimeLine";
-import axiosClient from "../config/axios";
-import Project from "../components/Project";
-
-// For lazy loading
-// const Project = lazy(() => import("../components/Project"));
-
-// install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination]);
+import SwiperContent from "../components/SwiperContent";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -53,7 +34,6 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
         easing: theme.transitions.easing.easeOut,
         duration: "5ms",
       }),
-      marginLeft: "100%",
       "@media (min-width: 900px)": {
         marginLeft: "30%",
       },
@@ -63,22 +43,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 
 export default function Home() {
   //States
-  const [projects, setProjects] = useState([]);
   const [open, setOpen] = useState(true);
-  const [loading, setLoading] = useState(false);
-
-  // Effect for loading projects
-  useEffect(() => {
-    const getProjects = async () => {
-      setLoading(true);
-      const response = await axiosClient.get("/projects");
-
-      setProjects(response.data);
-      setLoading(false);
-    };
-
-    getProjects();
-  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -150,7 +115,6 @@ export default function Home() {
             position: "relative",
             "& .MuiDrawer-paper": {
               width: "inherit",
-              boxSizing: "border-box",
             },
             "@media (min-width: 900px)": {
               width: "30%",
@@ -182,56 +146,9 @@ export default function Home() {
           <TimeLine />
         </Drawer>
         <Main open={open}>
-          {loading ? (
-            <Box sx={{ display: "flex" }}>
-              <CircularProgress
-                size={100}
-                thickness={5}
-                sx={{ color: "white", mx: "auto", mt: 5 }}
-              />
-            </Box>
-          ) : (
-            <Swiper
-              effect={"coverflow"}
-              slidesPerView={1}
-              spaceBetween={0}
-              breakpoints={{
-                900: {
-                  slidesPerView: 2,
-                  pagination: false,
-                },
-              }}
-              grabCursor={true}
-              centeredSlides={true}
-              coverflowEffect={{
-                rotate: 30,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              pagination={true}
-              loop={true}
-            >
-              {projects.map((project) => (
-                <SwiperSlide key={project.id}>
-                  <Project key={project.id} project={project} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          )}
+          <SwiperContent />
         </Main>
       </Container>
     </Layout>
   );
 }
-
-/*
-<Grid
-              container
-              spacing={1}
-              sx={{ p: 1 }}
-              columns={open && { md: 4, lg: 8 }}
-            >
-</Grid>
-*/
