@@ -214,7 +214,7 @@ export default function Home() {
               loop={true}
             >
               {projects.map((project) => (
-                <SwiperSlide>
+                <SwiperSlide key={project.id}>
                   <Project key={project.id} project={project} />
                 </SwiperSlide>
               ))}
