@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import {
+  Box,
   Container,
   Grid,
   Fab,
@@ -8,21 +9,40 @@ import {
   Drawer,
   Divider,
   Typography,
+  CircularProgress,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { teal } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+// import Swiper core and required modules
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 
 import Layout from "../components/Layout";
 import About from "../components/About";
-import Project from "../components/Project";
 import TimeLine from "../components/TimeLine";
 import axiosClient from "../config/axios";
+import Project from "../components/Project";
+
+// For lazy loading
+// const Project = lazy(() => import("../components/Project"));
+
+// install Swiper modules
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     flexGrow: 1,
-    padding: 0,
+    paddingTop: 70,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 30,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: "5ms",
@@ -45,13 +65,16 @@ export default function Home() {
   //States
   const [projects, setProjects] = useState([]);
   const [open, setOpen] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Effect for loading projects
   useEffect(() => {
     const getProjects = async () => {
+      setLoading(true);
       const response = await axiosClient.get("/projects");
 
       setProjects(response.data);
+      setLoading(false);
     };
 
     getProjects();
@@ -81,12 +104,14 @@ export default function Home() {
           aria-label="about"
           sx={{
             position: "fixed",
-            left: 10,
-            top: "10%",
+            left: 0,
+            top: 10,
             zIndex: 1001,
-            width: 150,
-            height: 50,
+            width: 140,
+            height: 40,
             justifyContent: "normal",
+            pl: 1,
+            borderRadius: "0px 24px 24px 0px",
           }}
           onClick={handleDrawerOpen}
         >
@@ -157,18 +182,56 @@ export default function Home() {
           <TimeLine />
         </Drawer>
         <Main open={open}>
-          <Grid
-            container
-            spacing={1}
-            sx={{ p: 1 }}
-            columns={open && { md: 4, lg: 8 }}
-          >
-            {projects.map((project) => (
-              <Project key={project.id} project={project} />
-            ))}
-          </Grid>
+          {loading ? (
+            <Box sx={{ display: "flex" }}>
+              <CircularProgress
+                size={100}
+                thickness={5}
+                sx={{ color: "white", mx: "auto", mt: 5 }}
+              />
+            </Box>
+          ) : (
+            <Swiper
+              effect={"coverflow"}
+              slidesPerView={1}
+              spaceBetween={0}
+              breakpoints={{
+                900: {
+                  slidesPerView: 2,
+                  pagination: false,
+                },
+              }}
+              grabCursor={true}
+              centeredSlides={true}
+              coverflowEffect={{
+                rotate: 30,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              pagination={true}
+              loop={true}
+            >
+              {projects.map((project) => (
+                <SwiperSlide>
+                  <Project key={project.id} project={project} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </Main>
       </Container>
     </Layout>
   );
 }
+
+/*
+<Grid
+              container
+              spacing={1}
+              sx={{ p: 1 }}
+              columns={open && { md: 4, lg: 8 }}
+            >
+</Grid>
+*/
