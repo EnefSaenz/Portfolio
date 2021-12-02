@@ -20,10 +20,6 @@ import SwiperContent from "../components/SwiperContent";
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     flexGrow: 1,
-    paddingTop: 70,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 30,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: "5ms",
@@ -43,7 +39,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 
 export default function Home() {
   //States
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -72,8 +68,8 @@ export default function Home() {
             left: 0,
             top: 10,
             zIndex: 1001,
-            width: 140,
-            height: 40,
+            width: 150,
+            height: 50,
             justifyContent: "normal",
             pl: 1,
             borderRadius: "0px 24px 24px 0px",
@@ -82,7 +78,7 @@ export default function Home() {
         >
           <Typography
             sx={{
-              fontSize: 20,
+              fontSize: 24,
               fontFamily: "Fredoka One",
               background:
                 "linear-gradient(90deg,rgba(0, 127, 128, 1) 0%,rgba(184, 33, 142, 1) 33%,rgba(75, 233, 255, 1) 69%,rgba(0, 127, 128, 1) 100%)",
@@ -146,6 +142,22 @@ export default function Home() {
           <TimeLine />
         </Drawer>
         <Main open={open}>
+          <Typography
+            variant="h1"
+            align="center"
+            pt={3}
+            sx={{ fontFamily: "Fredoka One" }}
+          >
+            Welcome!
+          </Typography>
+          <Typography
+            variant="h4"
+            align="center"
+            pb={4}
+            sx={{ fontFamily: "Itim" }}
+          >
+            Take a look of some projects developed by me
+          </Typography>
           <SwiperContent />
         </Main>
       </Container>

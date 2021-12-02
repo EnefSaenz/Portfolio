@@ -3,19 +3,19 @@ import React, { useState, useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import axiosClient from "../config/axios";
+import Project from "../components/Project";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
-
-import axiosClient from "../config/axios";
-import Project from "../components/Project";
+import SwiperCore, { EffectCoverflow, Pagination, Keyboard } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination]);
+SwiperCore.use([EffectCoverflow, Pagination, Keyboard]);
 
 const SwiperContent = () => {
   //States
@@ -54,20 +54,34 @@ const SwiperContent = () => {
         </Box>
       ) : (
         <Swiper
-          effect={"coverflow"}
           slidesPerView={2}
           spaceBetween={0}
           grabCursor={true}
           centeredSlides={true}
-          coverflowEffect={{
-            rotate: 30,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
           pagination={pagination}
           loop={true}
+          keyboard={{
+            enabled: true,
+          }}
+          effect={"coverflow"}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 200,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          breakpoints={{
+            600: {
+              coverflowEffect: {
+                rotate: 30,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              },
+            },
+          }}
         >
           {projects.map((project) => (
             <SwiperSlide key={project.id}>
