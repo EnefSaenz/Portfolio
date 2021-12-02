@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import {
+  Box,
   Container,
   Fab,
   Avatar,
@@ -73,6 +74,10 @@ export default function Home() {
             justifyContent: "normal",
             pl: 1,
             borderRadius: "0px 24px 24px 0px",
+            bgcolor: "white",
+            "&:hover": {
+              bgcolor: "#e0e0e0",
+            },
           }}
           onClick={handleDrawerOpen}
         >
@@ -142,14 +147,16 @@ export default function Home() {
           <TimeLine />
         </Drawer>
         <Main open={open}>
-          <Typography
-            variant="h1"
-            align="center"
+          <Box
             pt={3}
-            sx={{ fontFamily: "Fredoka One" }}
+            sx={{
+              typography: { xs: "h2", sm: "h1" },
+              fontFamily: "Fredoka One, cursive !important",
+              textAlign: "center",
+            }}
           >
             Welcome!
-          </Typography>
+          </Box>
           <Typography
             variant="h4"
             align="center"

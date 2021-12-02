@@ -1,16 +1,16 @@
 html {
-  height: 100%;
+  height: 100% !important;
 }
 
 body {
-  min-height: 100%;
-  font-family: "Patrick Hand", cursive;
-  background: rgb(0, 127, 128);
+  min-height: 100% !important;
+  font-family: "Patrick Hand", cursive !important;
+  background: rgb(0, 127, 128) !important;
   background: linear-gradient(
     90deg,
     rgba(0, 127, 128, 1) 0%,
     rgba(0, 101, 102, 1) 50%,
     rgba(0, 127, 128, 1) 100%
-  );
-  color: white;
+  ) !important;
+  color: white !important;
 }
