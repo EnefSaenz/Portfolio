@@ -69,8 +69,8 @@ export default function Home() {
             left: 0,
             top: 10,
             zIndex: 1001,
-            width: 150,
-            height: 50,
+            width: { xs: 140, sm: 150 },
+            height: { xs: 40, sm: 50 },
             justifyContent: "normal",
             pl: 1,
             borderRadius: "0px 24px 24px 0px",
@@ -83,7 +83,7 @@ export default function Home() {
         >
           <Typography
             sx={{
-              fontSize: 24,
+              fontSize: { xs: 20, sm: 24 },
               fontFamily: "Fredoka One",
               background:
                 "linear-gradient(90deg,rgba(0, 127, 128, 1) 0%,rgba(184, 33, 142, 1) 33%,rgba(75, 233, 255, 1) 69%,rgba(0, 127, 128, 1) 100%)",
@@ -148,8 +148,8 @@ export default function Home() {
         </Drawer>
         <Main open={open}>
           <Box
-            pt={3}
             sx={{
+              pt: { xs: 5, sm: 3 },
               typography: { xs: "h2", sm: "h1" },
               fontFamily: "Fredoka One, cursive !important",
               textAlign: "center",
@@ -163,7 +163,7 @@ export default function Home() {
             pb={4}
             sx={{ fontFamily: "Itim" }}
           >
-            Take a look of some projects developed by me
+            Let's take a look of some projects developed by Sáenz
           </Typography>
           <SwiperContent />
         </Main>
