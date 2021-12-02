@@ -163,7 +163,7 @@ export default function Home() {
             pb={4}
             sx={{ fontFamily: "Itim" }}
           >
-            Let's take a look of some projects developed by Sáenz
+            Let&apos;s take a look of some projects developed by Sáenz
           </Typography>
           <SwiperContent />
         </Main>
