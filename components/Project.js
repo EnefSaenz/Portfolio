@@ -47,7 +47,7 @@ const Project = ({ project }) => {
       />
       <Carousel indicators={false} swipe={false} fullHeightHover={false}>
         {images.map((img) => (
-          <Link href={url} color="inherit">
+          <Link key={img.url} href={url} color="inherit">
             <CardMedia
               component="img"
               image={img.url}
