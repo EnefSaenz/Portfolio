@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import {
-  Card,
-  Typography,
-  Link,
-  CardContent,
   Avatar,
-  CardHeader,
-  CardActions,
-  Collapse,
   Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
   CardMedia,
+  Collapse,
+  Link,
+  Typography,
 } from "@mui/material";
-import { teal } from "@mui/material/colors";
+import { blue, teal } from "@mui/material/colors";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -35,26 +35,24 @@ const Project = ({ project }) => {
   return (
     <Card>
       <CardHeader
-        title={
-          <Typography sx={{ fontFamily: "Fredoka One" }}>{name}</Typography>
-        }
-        subheader={<Typography>12/11/2021</Typography>}
         avatar={
-          <Avatar sx={{ bgcolor: "black", color: "cyan" }}>
+          <Avatar sx={{ bgcolor: blue[900], color: "white" }} aria-label="tech">
             <FontAwesomeIcon icon={["fab", `${iconTech}`]} />
           </Avatar>
         }
+        title={name}
+        subheader="September 14, 2016"
       />
       <Carousel indicators={false} swipe={false} fullHeightHover={false}>
         {images.map((img) => (
-          <Link key={img.url} href={url} color="inherit">
+          <Link key={img.url} href={url}>
             <CardMedia
               component="img"
               image={img.url}
               sx={{
                 height: 300,
                 cursor: "pointer",
-                filter: "brightness(80%)",
+                filter: "brightness(90%)",
                 "&:hover": {
                   filter: "brightness(100%)",
                 },
@@ -63,10 +61,11 @@ const Project = ({ project }) => {
           </Link>
         ))}
       </Carousel>
-      <CardActions disableSpacing>
+      <CardActions>
         <Button
           size="small"
-          sx={{ color: teal[700] }}
+          color="primary"
+          aria-label="more"
           onClick={handleExpandInfo}
         >
           Learn More
@@ -84,9 +83,7 @@ const Project = ({ project }) => {
       </CardActions>
       <Collapse in={expandedInfo} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography sx={{ fontFamily: "Patrick Hand" }}>
-            {description}
-          </Typography>
+          <Typography>{description}</Typography>
         </CardContent>
       </Collapse>
     </Card>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
 import { teal } from "@mui/material/colors";
 
 const About = () => {
@@ -18,22 +18,15 @@ const About = () => {
         >
           ES
         </Avatar>
-
         <Typography
-          variant="h5"
-          gutterBottom
-          component="div"
+          variant="h4"
+          align="center"
           sx={{ textTransform: "uppercase", fontFamily: "Concert One" }}
+          gutterBottom
         >
           Emmanuel Sáenz
         </Typography>
-
-        <Typography
-          variant="h6"
-          gutterBottom
-          component="div"
-          sx={{ fontFamily: "Patrick Hand" }}
-        >
+        <Typography variant="h6" align="center" gutterBottom>
           Bienvenido a mi portafolio
         </Typography>
       </Stack>

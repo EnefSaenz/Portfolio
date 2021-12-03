@@ -1,18 +1,20 @@
-import React, { useState } from "react";
-
+import React, { useContext, useState } from "react";
+// From Material UI
 import {
+  Avatar,
   Box,
   Container,
-  Fab,
-  Avatar,
   Drawer,
   Divider,
+  Fab,
   Typography,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import { teal } from "@mui/material/colors";
+// From FontAwesomeIcons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+// From Components
+import colorModeContext from "../contexts/colorModeContext";
 import Layout from "../components/Layout";
 import About from "../components/About";
 import TimeLine from "../components/TimeLine";
@@ -23,13 +25,13 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     flexGrow: 1,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
-      duration: "5ms",
+      duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: 0,
     ...(open && {
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
-        duration: "5ms",
+        duration: theme.transitions.duration.enteringScreen,
       }),
       "@media (min-width: 900px)": {
         marginLeft: "30%",
@@ -41,6 +43,12 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 export default function Home() {
   //States
   const [open, setOpen] = useState(false);
+
+  // Theming
+  const theme = useTheme();
+
+  // Contexts
+  const colorMode = useContext(colorModeContext);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -68,12 +76,12 @@ export default function Home() {
             position: "fixed",
             left: 0,
             top: 10,
-            zIndex: 1001,
+            zIndex: "speedDial",
             width: { xs: 140, sm: 150 },
             height: { xs: 40, sm: 50 },
             justifyContent: "normal",
             pl: 1,
-            borderRadius: "0px 24px 24px 0px",
+            borderRadius: "0px 25px 25px 0px",
             bgcolor: "white",
             "&:hover": {
               bgcolor: "#e0e0e0",
@@ -82,9 +90,8 @@ export default function Home() {
           onClick={handleDrawerOpen}
         >
           <Typography
+            variant="h5"
             sx={{
-              fontSize: { xs: 20, sm: 24 },
-              fontFamily: "Fredoka One",
               background:
                 "linear-gradient(90deg,rgba(0, 127, 128, 1) 0%,rgba(184, 33, 142, 1) 33%,rgba(75, 233, 255, 1) 69%,rgba(0, 127, 128, 1) 100%)",
               WebkitBackgroundClip: "text",
@@ -101,12 +108,34 @@ export default function Home() {
               color: "white",
               position: "absolute",
               right: 0,
-              height: "100%",
-              width: "auto",
+              height: { xs: 40, sm: 50 },
+              width: { xs: 40, sm: 50 },
             }}
           >
             ES
           </Avatar>
+        </Fab>
+
+        <Fab
+          aria-label="mode"
+          size="small"
+          sx={{
+            position: "fixed",
+            right: 10,
+            top: 10,
+            zIndex: "speedDial",
+            bgcolor: "white",
+            "&:hover": {
+              bgcolor: "#e0e0e0",
+            },
+          }}
+          onClick={colorMode.toggleColorMode}
+        >
+          {theme.palette.mode === "dark" ? (
+            <FontAwesomeIcon icon={["fas", "sun"]} />
+          ) : (
+            <FontAwesomeIcon icon={["fas", "moon"]} />
+          )}
         </Fab>
 
         <Drawer
@@ -127,16 +156,12 @@ export default function Home() {
         >
           <Fab
             aria-label="about"
+            color="secondary"
             sx={{
               position: "absolute",
-              right: 20,
+              right: 10,
               top: 10,
               fontSize: 26,
-              bgcolor: teal[700],
-              color: "white",
-              "&:hover": {
-                bgcolor: teal[800],
-              },
             }}
             onClick={handleDrawerClose}
           >
@@ -149,22 +174,19 @@ export default function Home() {
         <Main open={open}>
           <Box
             sx={{
-              pt: { xs: 5, sm: 3 },
-              typography: { xs: "h2", sm: "h1" },
-              fontFamily: "Fredoka One, cursive !important",
-              textAlign: "center",
+              py: 5,
+              mb: 3,
+              backgroundColor: "primary.dark",
+              color: "primary.contrastText",
             }}
           >
-            Welcome!
+            <Typography variant="h1" align="center">
+              Welcome!
+            </Typography>
+            <Typography variant="h4" align="center">
+              Let&apos;s take a look of some projects developed by Sáenz
+            </Typography>
           </Box>
-          <Typography
-            variant="h4"
-            align="center"
-            pb={4}
-            sx={{ fontFamily: "Itim" }}
-          >
-            Let&apos;s take a look of some projects developed by Sáenz
-          </Typography>
           <SwiperContent />
         </Main>
       </Container>

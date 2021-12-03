@@ -12,7 +12,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination, Keyboard } from "swiper";
+import SwiperCore, { EffectCoverflow, Keyboard, Pagination } from "swiper";
 
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination, Keyboard]);
@@ -49,7 +49,8 @@ const SwiperContent = () => {
           <CircularProgress
             size={100}
             thickness={5}
-            sx={{ color: "white", mx: "auto", mt: 5 }}
+            color="secondary"
+            sx={{ mx: "auto", mt: 5 }}
           />
         </Box>
       ) : (
@@ -69,7 +70,8 @@ const SwiperContent = () => {
             stretch: 0,
             depth: 200,
             modifier: 1,
-            slideShadows: false,
+            slideShadows: true,
+            scale: 0.9,
           }}
           breakpoints={{
             600: {
@@ -79,6 +81,7 @@ const SwiperContent = () => {
                 depth: 100,
                 modifier: 1,
                 slideShadows: true,
+                scale: 1,
               },
             },
           }}

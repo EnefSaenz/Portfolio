@@ -23,4 +23,9 @@
     width: 80% !important;
     margin-left: -15% !important;
   }
+
+  .swiper-slide-active .swiper-slide-shadow-left,
+  .swiper-slide-active .swiper-slide-shadow-right {
+    background-image: inherit !important;
+  }
 }
