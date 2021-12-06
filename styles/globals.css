@@ -4,4 +4,37 @@ html {
 
 body {
   min-height: 100%;
+  /*
+  background: radial-gradient(at 100% 100%, #23d5ab 0%, #001e3c 20%) right,
+    radial-gradient(at 0% 100%, #a524ff 0%, #001e3c 20%) left;
+    */
+  background-size: 51% 100%; /* width height */
+  background-repeat: no-repeat;
+  /*background-size: 400% 400%;*/
+  animation: zoom-in-zoom-out 15s ease infinite;
+  /*height: 100vh;*/
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    background-size: 51% 100%;
+  }
+  50% {
+    background-size: 51% 150%;
+  }
+  100% {
+    background-size: 51% 100%;
+  }
 }

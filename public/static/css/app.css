@@ -18,6 +18,10 @@
   background: #9c27b0 !important;
 }
 
+.swiper {
+  padding: 1rem 0rem !important;
+}
+
 @media only screen and (max-width: 599px) {
   .swiper-slide-active {
     width: 80% !important;

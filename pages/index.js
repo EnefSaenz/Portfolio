@@ -34,7 +34,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
         duration: theme.transitions.duration.enteringScreen,
       }),
       "@media (min-width: 900px)": {
-        marginLeft: "30%",
+        marginLeft: "34%",
       },
     }),
   })
@@ -93,7 +93,7 @@ export default function Home() {
             variant="h5"
             sx={{
               background:
-                "linear-gradient(90deg,rgba(0, 127, 128, 1) 0%,rgba(184, 33, 142, 1) 33%,rgba(75, 233, 255, 1) 69%,rgba(0, 127, 128, 1) 100%)",
+                "linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -162,6 +162,8 @@ export default function Home() {
               right: 10,
               top: 10,
               fontSize: 26,
+              background:
+                "linear-gradient(-45deg, rgba(91, 168, 160, 0.2), rgba(91, 168, 160, 0.5), rgba(91, 168, 160, 1))",
             }}
             onClick={handleDrawerClose}
           >
@@ -176,8 +178,7 @@ export default function Home() {
             sx={{
               py: 5,
               mb: 3,
-              backgroundColor: "primary.dark",
-              color: "primary.contrastText",
+              backgroundColor: "background.paper",
             }}
           >
             <Typography variant="h1" align="center">

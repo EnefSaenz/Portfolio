@@ -33,7 +33,11 @@ const Project = ({ project, isActive }) => {
   };
 
   return (
-    <Card>
+    <Card
+      sx={{
+        boxShadow: 7,
+      }}
+    >
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[900], color: "white" }} aria-label="tech">
@@ -68,11 +72,7 @@ const Project = ({ project, isActive }) => {
           image={images[0].url}
           sx={{
             height: 300,
-            cursor: "pointer",
             filter: "brightness(90%)",
-            "&:hover": {
-              filter: "brightness(100%)",
-            },
           }}
         />
       )}
@@ -83,6 +83,7 @@ const Project = ({ project, isActive }) => {
           color="primary"
           aria-label="more"
           onClick={handleExpandInfo}
+          disabled={!isActive}
         >
           Learn More
         </Button>
@@ -93,6 +94,7 @@ const Project = ({ project, isActive }) => {
           aria-label="github"
           sx={{ ml: "auto" }}
           endIcon={<FontAwesomeIcon icon={["fab", "github"]} />}
+          disabled={!isActive}
         >
           View on
         </Button>
