@@ -21,7 +21,7 @@ const Carousel = dynamic(() => import("react-material-ui-carousel"), {
   ssr: false,
 });
 
-const Project = ({ project }) => {
+const Project = ({ project, isActive }) => {
   // States
   const [expandedInfo, setExpandedInfo] = useState(false);
 
@@ -43,24 +43,40 @@ const Project = ({ project }) => {
         title={name}
         subheader="September 14, 2016"
       />
-      <Carousel indicators={false} swipe={false} fullHeightHover={false}>
-        {images.map((img) => (
-          <Link key={img.url} href={url}>
-            <CardMedia
-              component="img"
-              image={img.url}
-              sx={{
-                height: 300,
-                cursor: "pointer",
-                filter: "brightness(90%)",
-                "&:hover": {
-                  filter: "brightness(100%)",
-                },
-              }}
-            />
-          </Link>
-        ))}
-      </Carousel>
+      {isActive ? (
+        <Carousel indicators={false} swipe={false} fullHeightHover={false}>
+          {images.map((img) => (
+            <Link key={img.url} href={url}>
+              <CardMedia
+                component="img"
+                image={img.url}
+                sx={{
+                  height: 300,
+                  cursor: "pointer",
+                  filter: "brightness(90%)",
+                  "&:hover": {
+                    filter: "brightness(100%)",
+                  },
+                }}
+              />
+            </Link>
+          ))}
+        </Carousel>
+      ) : (
+        <CardMedia
+          component="img"
+          image={images[0].url}
+          sx={{
+            height: 300,
+            cursor: "pointer",
+            filter: "brightness(90%)",
+            "&:hover": {
+              filter: "brightness(100%)",
+            },
+          }}
+        />
+      )}
+
       <CardActions>
         <Button
           size="small"

@@ -88,7 +88,13 @@ const SwiperContent = () => {
         >
           {projects.map((project) => (
             <SwiperSlide key={project.id}>
-              <Project key={project.id} project={project} />
+              {({ isActive }) => (
+                <Project
+                  key={project.id}
+                  project={project}
+                  isActive={isActive}
+                />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
