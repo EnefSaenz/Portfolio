@@ -147,7 +147,7 @@ export default function Home() {
               width: "inherit",
             },
             "@media (min-width: 900px)": {
-              width: "30%",
+              width: "34%",
             },
           }}
           variant="persistent"
