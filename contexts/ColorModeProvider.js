@@ -43,7 +43,7 @@ const ColorModeProvider = (props) => {
                   divider: "rgba(0, 0, 0, 0.12)",
                   background: {
                     default:
-                      "#e6e6e6; background: radial-gradient(at 100% 100%, #23d5ab 0%, #e6e6e6 20%) right, radial-gradient(at 0% 100%, #a524ff 0%, #e6e6e6 20%) left",
+                      "#e6e6e6; background: linear-gradient(45deg, #6a1b9a, #e6e6e6, #e6e6e6, #b32b2b)",
                     paper: "#ffffff",
                   },
                   text: {
@@ -69,7 +69,7 @@ const ColorModeProvider = (props) => {
                   divider: "#263238",
                   background: {
                     default:
-                      "#001e3c; background: radial-gradient(at 100% 100%, #23d5ab 0%, #001e3c 20%) right, radial-gradient(at 0% 100%, #a524ff 0%, #001e3c 20%) left",
+                      "#001e3c; background: linear-gradient(45deg, #94b447, #001e3c, #001e3c, #5ba8a0)",
                     paper: "rgb(10, 25, 41)",
                   },
                   text: {
