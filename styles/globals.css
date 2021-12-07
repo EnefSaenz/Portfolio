@@ -4,10 +4,10 @@ html {
 
 body {
   min-height: 100%;
-  /*background: linear-gradient(45deg, #94b447, #001e3c, #001e3c, #5ba8a0);*/
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
+  /* background: linear-gradient(45deg, #94b447, #001e3c, #001e3c, #5ba8a0);*/
+  /* background-size: 400% 400%;*/
+  /* animation: gradient 15s ease infinite;*/
+  /* height: 100vh;*/
 }
 
 @keyframes gradient {

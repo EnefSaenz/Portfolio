@@ -5,7 +5,6 @@ import {
   createTheme,
   responsiveFontSizes,
 } from "@mui/material/styles";
-import { blue, blueGrey, teal } from "@mui/material/colors";
 
 const ColorModeProvider = (props) => {
   const [mode, setMode] = useState("light");
@@ -42,8 +41,7 @@ const ColorModeProvider = (props) => {
                   },
                   divider: "rgba(0, 0, 0, 0.12)",
                   background: {
-                    default:
-                      "#e6e6e6; background: linear-gradient(45deg, #6a1b9a, #e6e6e6, #e6e6e6, #b32b2b)",
+                    default: "#e6e6e6",
                     paper: "#ffffff",
                   },
                   text: {
@@ -68,13 +66,12 @@ const ColorModeProvider = (props) => {
                   },
                   divider: "#263238",
                   background: {
-                    default:
-                      "#001e3c; background: linear-gradient(45deg, #94b447, #001e3c, #001e3c, #5ba8a0)",
+                    default: "#001e3c",
                     paper: "rgb(10, 25, 41)",
                   },
                   text: {
-                    primary: "#CBE54E",
-                    secondary: "#8ea036",
+                    primary: "#ffffff",
+                    secondary: "rgba(255,255,255,0.7)",
                   },
                 }),
           },

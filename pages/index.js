@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
-import { teal } from "@mui/material/colors";
+import { amber, blueGrey } from "@mui/material/colors";
 // From FontAwesomeIcons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // From Components
@@ -64,6 +64,10 @@ export default function Home() {
         maxWidth={false}
         sx={{
           padding: 0,
+          background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.background.default}, ${theme.palette.background.default}, ${theme.palette.secondary.main})`,
+          backgroundSize: "400% 400%",
+          animation: "gradient 15s ease infinite",
+          height: "100vh",
           "@media (min-width: 600px)": {
             paddingX: 0,
           },
@@ -72,6 +76,7 @@ export default function Home() {
         <Fab
           variant="extended"
           aria-label="about"
+          color="secondary"
           sx={{
             position: "fixed",
             left: 0,
@@ -82,29 +87,15 @@ export default function Home() {
             justifyContent: "normal",
             pl: 1,
             borderRadius: "0px 25px 25px 0px",
-            bgcolor: "white",
-            "&:hover": {
-              bgcolor: "#e0e0e0",
-            },
           }}
           onClick={handleDrawerOpen}
         >
-          <Typography
-            variant="h5"
-            sx={{
-              background:
-                "linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            About
-          </Typography>
+          <Typography variant="h5">About</Typography>
           <Avatar
             alt="Emmanuel Sáenz"
             src="/static/img/avatar.jpg"
             sx={{
-              bgcolor: teal[700],
+              bgcolor: "background.default",
               color: "white",
               position: "absolute",
               right: 0,
@@ -124,9 +115,15 @@ export default function Home() {
             right: 10,
             top: 10,
             zIndex: "speedDial",
-            bgcolor: "white",
+            fontSize: 22,
+            color: "info.contrastText",
+            bgcolor: `${
+              theme.palette.mode === "dark" ? amber[500] : blueGrey[500]
+            }`,
             "&:hover": {
-              bgcolor: "#e0e0e0",
+              bgcolor: `${
+                theme.palette.mode === "dark" ? amber[600] : blueGrey[600]
+              }`,
             },
           }}
           onClick={colorMode.toggleColorMode}
@@ -162,8 +159,6 @@ export default function Home() {
               right: 10,
               top: 10,
               fontSize: 26,
-              background:
-                "linear-gradient(-45deg, rgba(91, 168, 160, 0.2), rgba(91, 168, 160, 0.5), rgba(91, 168, 160, 1))",
             }}
             onClick={handleDrawerClose}
           >

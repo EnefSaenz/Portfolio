@@ -12,10 +12,10 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Keyboard, Pagination } from "swiper";
+import SwiperCore, { EffectCreative, Keyboard, Pagination } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination, Keyboard]);
+SwiperCore.use([EffectCreative, Pagination, Keyboard]);
 
 const SwiperContent = () => {
   //States
@@ -55,8 +55,7 @@ const SwiperContent = () => {
         </Box>
       ) : (
         <Swiper
-          slidesPerView={2}
-          spaceBetween={0}
+          slidesPerView={1}
           grabCursor={true}
           centeredSlides={true}
           pagination={pagination}
@@ -64,24 +63,49 @@ const SwiperContent = () => {
           keyboard={{
             enabled: true,
           }}
-          effect={"coverflow"}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-            scale: 1,
+          effect={"creative"}
+          creativeEffect={{
+            limitProgress: 2,
+            prev: {
+              translate: ["-90%", 0, 0],
+              shadow: true,
+            },
+            next: {
+              translate: ["90%", 0, 0],
+              shadow: true,
+            },
           }}
           breakpoints={{
             600: {
-              coverflowEffect: {
-                rotate: 30,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-                scale: 1,
+              slidesPerView: 2,
+              effect: "creative",
+              creativeEffect: {
+                limitProgress: 2,
+                prev: {
+                  translate: ["-90%", 0, 0],
+                  shadow: true,
+                },
+                next: {
+                  translate: ["90%", 0, 0],
+                  shadow: true,
+                },
+              },
+            },
+            900: {
+              slidesPerView: 2,
+              effect: "creative",
+              creativeEffect: {
+                limitProgress: 2,
+                prev: {
+                  translate: ["-90%", 0, 0],
+                  rotate: [0, 30, 0],
+                  shadow: true,
+                },
+                next: {
+                  translate: ["90%", 0, 0],
+                  rotate: [0, -30, 0],
+                  shadow: true,
+                },
               },
             },
           }}

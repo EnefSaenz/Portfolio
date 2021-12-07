@@ -11,7 +11,7 @@ import {
   Link,
   Typography,
 } from "@mui/material";
-import { blue, teal } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
