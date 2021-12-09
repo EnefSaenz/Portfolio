@@ -1,3 +1,7 @@
+.swiper {
+  padding: 1rem 0rem !important;
+}
+
 .swiper-pagination {
   position: initial !important;
   margin-bottom: 10px;
@@ -16,10 +20,6 @@
 .swiper-pagination-bullet-active {
   color: white !important;
   background: black !important;
-}
-
-.swiper {
-  padding: 1rem 0rem !important;
 }
 
 @media only screen and (max-width: 599px) {

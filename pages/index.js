@@ -65,9 +65,8 @@ export default function Home() {
         sx={{
           padding: 0,
           background: `radial-gradient(at 0% 100%, ${theme.palette.primary.main} 0%, transparent 50%), radial-gradient(at 100% 100%, ${theme.palette.secondary.main} 0%, transparent 50%)`,
-          backgroundSize: "100% 100%",
           animation: "zoom-in-zoom-out 15s ease-out infinite",
-          height: "100vh",
+          minHeight: "100vh",
           "@media (min-width: 600px)": {
             paddingX: 0,
           },

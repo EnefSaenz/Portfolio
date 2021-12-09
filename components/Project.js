@@ -99,11 +99,13 @@ const Project = ({ project, isActive }) => {
           View on
         </Button>
       </CardActions>
-      <Collapse in={expandedInfo} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography>{description}</Typography>
-        </CardContent>
-      </Collapse>
+      {isActive && (
+        <Collapse in={expandedInfo} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography>{description}</Typography>
+          </CardContent>
+        </Collapse>
+      )}
     </Card>
   );
 };
