@@ -19,20 +19,23 @@ const TimeLine = () => {
           variant="body2"
           color="text.secondary"
         >
-          9:30 am
+          2+ years
         </TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineConnector />
-          <TimelineDot>
-            <FontAwesomeIcon icon={["fas", "utensils"]} />
+          <TimelineConnector sx={{ bgcolor: "blue" }} />
+          <TimelineDot variant="outlined" sx={{ borderColor: "blue" }}>
+            <FontAwesomeIcon icon={["fas", "phone-alt"]} />
           </TimelineDot>
-          <TimelineConnector />
+          <TimelineConnector sx={{ bgcolor: "blue" }} />
         </TimelineSeparator>
         <TimelineContent sx={{ py: "12px", px: 2 }}>
           <Typography variant="h6" component="span">
-            Eat
+            Telcel
           </Typography>
-          <Typography>Because you need strength</Typography>
+          <Typography>
+            Developing web applications for reaching project's objectives using
+            technologies like NodeJS, ReactJS and Java Spring Framework
+          </Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
@@ -41,50 +44,50 @@ const TimeLine = () => {
           variant="body2"
           color="text.secondary"
         >
-          10:00 am
+          6 months
         </TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineConnector />
-          <TimelineDot color="primary">
-            <FontAwesomeIcon icon={["fas", "laptop-code"]} />
+          <TimelineConnector sx={{ bgcolor: "red" }} />
+          <TimelineDot variant="outlined" sx={{ borderColor: "red" }}>
+            <FontAwesomeIcon icon={["fas", "credit-card"]} />
           </TimelineDot>
-          <TimelineConnector />
+          <TimelineConnector sx={{ bgcolor: "red" }} />
         </TimelineSeparator>
         <TimelineContent sx={{ py: "12px", px: 2 }}>
           <Typography variant="h6" component="span">
-            Code
+            Claro Pagos
           </Typography>
-          <Typography>Because it&apos;s awesome!</Typography>
+          <Typography>
+            As a functional analyst in a SCRUM stack, on charge of get
+            customer's requirements and transform it in processes to be
+            interpreted by the development team
+          </Typography>
         </TimelineContent>
       </TimelineItem>
       <TimelineItem>
+        <TimelineOppositeContent
+          sx={{ m: "auto 0" }}
+          variant="body2"
+          color="text.secondary"
+        >
+          6 months
+        </TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineConnector />
-          <TimelineDot color="primary" variant="outlined">
-            <FontAwesomeIcon icon={["fas", "bed"]} />
+          <TimelineConnector sx={{ bgcolor: "purple" }} />
+          <TimelineDot variant="outlined" sx={{ borderColor: "purple" }}>
+            <FontAwesomeIcon icon={["fas", "project-diagram"]} />
           </TimelineDot>
-          <TimelineConnector sx={{ bgcolor: "secondary.main" }} />
+          <TimelineConnector sx={{ bgcolor: "purple" }} />
         </TimelineSeparator>
         <TimelineContent sx={{ py: "12px", px: 2 }}>
           <Typography variant="h6" component="span">
-            Sleep
+            Accenture
           </Typography>
-          <Typography>Because you need rest</Typography>
-        </TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineSeparator>
-          <TimelineConnector sx={{ bgcolor: "secondary.main" }} />
-          <TimelineDot color="secondary">
-            <FontAwesomeIcon icon={["fas", "retweet"]} />
-          </TimelineDot>
-          <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent sx={{ py: "12px", px: 2 }}>
-          <Typography variant="h6" component="span">
-            Repeat
+          <Typography>
+            Being part of a PMO, taking control of risks scheduled for
+            communicate it to stakeholders and register each accomplished
+            objective
           </Typography>
-          <Typography>Because this is the life you love!</Typography>
         </TimelineContent>
       </TimelineItem>
     </Timeline>

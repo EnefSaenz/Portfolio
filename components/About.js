@@ -27,7 +27,7 @@ const About = () => {
           Emmanuel Sáenz
         </Typography>
         <Typography variant="h6" align="center" gutterBottom>
-          Bienvenido a mi portafolio
+          Welcome to my portfolio
         </Typography>
       </Stack>
     </>
