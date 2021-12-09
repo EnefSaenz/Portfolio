@@ -33,8 +33,8 @@ const TimeLine = () => {
             Telcel
           </Typography>
           <Typography>
-            Developing web applications for reaching project's objectives using
-            technologies like NodeJS, ReactJS and Java Spring Framework
+            Developing web applications for reaching project&apos;s objectives
+            using technologies like NodeJS, ReactJS and Java Spring Framework
           </Typography>
         </TimelineContent>
       </TimelineItem>
@@ -59,7 +59,7 @@ const TimeLine = () => {
           </Typography>
           <Typography>
             As a functional analyst in a SCRUM stack, on charge of get
-            customer's requirements and transform it in processes to be
+            customer&apos;s requirements and transform it in processes to be
             interpreted by the development team
           </Typography>
         </TimelineContent>
