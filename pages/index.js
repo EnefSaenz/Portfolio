@@ -17,8 +17,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import colorModeContext from "../contexts/colorModeContext";
 import Layout from "../components/Layout";
 import About from "../components/About";
-import TimeLine from "../components/TimeLine";
 import SwiperContent from "../components/SwiperContent";
+import SidebarList from "../components/SidebarList";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -165,7 +165,7 @@ export default function Home() {
           </Fab>
           <About />
           <Divider />
-          <TimeLine />
+          <SidebarList />
         </Drawer>
         <Main open={open}>
           <Box
