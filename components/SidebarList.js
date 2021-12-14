@@ -1,4 +1,6 @@
 import React from "react";
+import { List } from "@mui/material";
+
 import Biography from "./Biography";
 import SidebarListItem from "./SidebarListItem";
 import Skills from "./Skills";

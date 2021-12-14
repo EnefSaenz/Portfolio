@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Box, Rating, Stack, Typography } from "@mui/material";
+
 import axiosClient from "../config/axios";
 
 const Skills = () => {
