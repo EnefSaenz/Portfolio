@@ -7,9 +7,8 @@ import {
   Divider,
 } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TimeLine from "./TimeLine";
 
-const SidebarListItem = ({ Component, listItem }) => {
+const SidebarListItem = ({ component, listItem }) => {
   //States
   const [open, setOpen] = useState(false);
 
@@ -33,7 +32,7 @@ const SidebarListItem = ({ Component, listItem }) => {
         )}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <TimeLine />
+        {component}
       </Collapse>
       <Divider variant="inset" component="li" />
     </>
